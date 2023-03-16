@@ -271,7 +271,7 @@ router.delete('/:id/session', async (req, res) => {
 
 router.put('/:id/stop', async (req, res) => {
 	try {
-		let doc = await agentModel.findById(req.params.id).lean();
+		let doc = await agentModel.findById({ agentId: req.params.id }).lean();
 		if (!doc) {
 			return res.status(404).json({
 				message: 'Agent Not Found'
